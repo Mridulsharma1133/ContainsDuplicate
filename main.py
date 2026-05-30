@@ -1,20 +1,20 @@
-nums = [1,2,3,1]
-k = 3
-indxObj = {}
+nums = [5]
+k = 1
+Sum = 0
+maxAvg = 0
 
-for i in range(len(nums)):
-    if (nums[i] in indxObj):
-        indxObj[nums[i]].append(i)
-    else:
-        indxObj[nums[i]] = [i]
+if (len(nums) == 1):
+    print(nums[0]/k)
 
-for indices in indxObj.values():
-    for i in range(len(indices) - 1):
-        if (indices[i + 1] - indices[i] <= k):
-            print("True")
-    
+for i in range(k):
+    Sum += nums[i]
 
-
-        
-
+avg = Sum/k
+maxAvg = max(maxAvg, avg)
+i = 0
+for j in range(k, len(nums)):
+    Sum += nums[j] - nums[j - k]
+    avg = Sum / k
+    maxAvg = max(maxAvg, avg)
+print(maxAvg)
     
