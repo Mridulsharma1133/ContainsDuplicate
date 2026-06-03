@@ -1,29 +1,28 @@
 
-s = "au"
+nums = [-1,0,1,2,-1,-4]
+Sum = 0
+triplet = []
+window = []
+i = 0
+left = 0
+right = 3
+while i < right:
+    window.append(nums[i])
+    Sum += nums[i]
+    if Sum == 0 and len(window) == 3:
+        if sorted(window) not in triplet:
+            triplet.append(sorted(window))
+    i += 1
+print(triplet)
 
-
-unique = s[0] 
-subStr = s[0] 
-maxLen = len(subStr)
-best = s[0]
-for j in range(1, len(s)):
-    if s[j] in unique:
-        if len(subStr) > maxLen:
-            maxLen = len(subStr)
-            best = subStr
-        idx = unique.index(s[j])
-        unique = unique[idx +1 :] + s[j]
-        subStr = unique
-    else:
-        subStr += s[j]
-        unique += s[j]
+print(i)
+# while right < len(nums):
+#     window.remove(nums[left])
+#     window.append(nums[right])
+#     if Sum == 0 and len(window) == 3:
+#         if sorted(window) not in triplet:
+#             triplet.append(sorted(window))
+#     left = right - i  + 1
     
-    if len(subStr) > maxLen:
-        maxLen = len(subStr)
-        best = subStr
-
-
-print(maxLen)
-
 
 
